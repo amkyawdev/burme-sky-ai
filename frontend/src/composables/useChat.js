@@ -1,8 +1,8 @@
 import { ref } from 'vue'
 import { useChatStore } from '@/stores/chatStore'
 import { streamChat } from '@/utils/api'
-import { parseMarkdown, isCLIContent } from '@/utils/markdown'
-import { formatCLI } from '@/utils/cliFormatter'
+import { parseMarkdown } from '@/utils/markdown'
+import { formatCLI, isCLIContent } from '@/utils/cliFormatter'
 import { useAnimation } from './useAnimation'
 
 export const useChat = () => {
@@ -38,7 +38,7 @@ export const useChat = () => {
           isLoading.value = false
           chatStore.setStreaming(false)
           showThankingAnimation()
-          
+
           // Format CLI content if detected
           if (isCLIContent(assistantMessage.content)) {
             assistantMessage.content = formatCLI(assistantMessage.content)
