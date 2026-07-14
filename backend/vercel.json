@@ -23,10 +23,6 @@
       "dest": "app/main.py" 
     }
   ],
-  "env": {
-    "OLLAMA_URL": "@ollama_url",
-    "WEBHOOK_URL": "@webhook_url"
-  },
   "installCommand": "pip install -r requirements.txt",
   "buildCommand": "echo 'Backend build complete'"
 }
