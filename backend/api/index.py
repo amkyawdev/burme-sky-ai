@@ -1,12 +1,8 @@
-import sys
-import os
-
-# Add parent directory to path for imports
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import chat, history, models
+from app.routes.chat import router as chat_router
+from app.routes.history import router as history_router
+from app.routes.models import router as models_router
 
 app = FastAPI(
     title="Burme Sky AI API",
@@ -22,9 +18,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(chat.router, prefix="/api/chat", tags=["chat"])
-app.include_router(history.router, prefix="/api/history", tags=["history"])
-app.include_router(models.router, prefix="/api/models", tags=["models"])
+app.include_router(chat_router, prefix="/api/chat", tags=["chat"])
+app.include_router(history_router, prefix="/api/history", tags=["history"])
+app.include_router(models_router, prefix="/api/models", tags=["models"])
 
 
 @app.get("/")
