@@ -5,7 +5,7 @@
       type="button" 
       data-bs-toggle="dropdown"
     >
-      <i class="bi bi-cpu me-2"></i>
+      <i class="bi bi-cpu me-1"></i>
       {{ currentModel }}
     </button>
     <ul class="dropdown-menu dropdown-menu-dark w-100">
@@ -17,7 +17,6 @@
           @click.prevent="selectModel(model.id)"
         >
           {{ model.name }}
-          <small class="text-muted d-block">{{ model.description }}</small>
         </a>
       </li>
     </ul>
@@ -31,10 +30,11 @@ import { fetchModels } from '@/utils/api'
 
 const chatStore = useChatStore()
 const models = ref([
-  { id: 'llama2', name: 'Llama 2', description: 'General purpose' },
-  { id: 'codellama', name: 'Code Llama', description: 'Code generation' },
-  { id: 'mistral', name: 'Mistral', description: 'Fast & efficient' },
-  { id: 'mixtral', name: 'Mixtral', description: 'High quality' }
+  { id: 'minimax-m2.5', name: 'MiniMax-M2.5' },
+  { id: 'minimax-m3', name: 'MiniMax-M3' },
+  { id: 'ministral-3:8b', name: 'Ministral-3:8b' },
+  { id: 'ministral-3:14b', name: 'Ministral-3:14b' },
+  { id: 'nemotron-3-nano:30b', name: 'Nemotron-3:30b' }
 ])
 
 const currentModel = computed(() => chatStore.currentModel)
@@ -46,8 +46,8 @@ const selectModel = (modelId) => {
 onMounted(async () => {
   try {
     const fetchedModels = await fetchModels()
-    if (fetchedModels.length > 0) {
-      models.value = fetchedModels
+    if (fetchedModels.models && fetchedModels.models.length > 0) {
+      models.value = fetchedModels.models
     }
   } catch (error) {
     console.error('Failed to load models:', error)
@@ -57,10 +57,6 @@ onMounted(async () => {
 
 <style scoped>
 .model-selector {
-  margin-bottom: 1rem;
-}
-
-.dropdown-item small {
-  font-size: 0.75rem;
+  margin-bottom: 0;
 }
 </style>

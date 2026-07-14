@@ -29,10 +29,11 @@ import { useChatStore } from '@/stores/chatStore'
 const chatStore = useChatStore()
 
 const models = [
-  { id: 'llama2', name: 'Llama 2', icon: 'bi bi-robot' },
-  { id: 'codellama', name: 'Code', icon: 'bi bi-code-slash' },
-  { id: 'mistral', name: 'Mistral', icon: 'bi bi-lightning-charge' },
-  { id: 'mixtral', name: 'Mixtral', icon: 'bi bi-stars' }
+  { id: 'minimax-m2.5', name: 'MiniMax-M2.5', icon: 'bi bi-robot' },
+  { id: 'minimax-m3', name: 'MiniMax-M3', icon: 'bi bi-robot' },
+  { id: 'ministral-3:8b', name: 'Ministral-3:8b', icon: 'bi bi-lightning-charge' },
+  { id: 'ministral-3:14b', name: 'Ministral-3:14b', icon: 'bi bi-lightning-charge' },
+  { id: 'nemotron-3-nano:30b', name: 'Nemotron-3:30b', icon: 'bi bi-stars' }
 ]
 
 const currentModel = computed(() => chatStore.currentModel)
