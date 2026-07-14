@@ -1,8 +1,8 @@
 <template>
   <div class="app-container">
-    <Sidebar v-if="showSidebar" />
-    <div class="main-content" :class="{ 'full-width': !showSidebar }">
-      <Header v-if="showSidebar" />
+    <Sidebar />
+    <div class="main-content" :class="{ 'full-width': !isSidebarOpen }">
+      <Header v-if="showHeader" />
       <router-view />
     </div>
   </div>
@@ -13,9 +13,11 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import Sidebar from './components/common/Sidebar.vue'
 import Header from './components/common/Header.vue'
+import { useSidebar } from './composables/useSidebar'
 
 const route = useRoute()
-const showSidebar = computed(() => route.path !== '/')
+const { isSidebarOpen } = useSidebar()
+const showHeader = computed(() => route.path === '/chat')
 </script>
 
 <style scoped>
@@ -24,7 +26,22 @@ const showSidebar = computed(() => route.path !== '/')
   min-height: 100vh;
 }
 
+.main-content {
+  flex: 1;
+  margin-left: 280px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+}
+
 .full-width {
-  width: 100%;
+  margin-left: 0;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
 }
 </style>

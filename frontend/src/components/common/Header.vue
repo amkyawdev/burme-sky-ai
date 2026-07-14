@@ -1,6 +1,9 @@
 <template>
   <header class="header">
     <div class="d-flex align-items-center">
+      <button class="btn btn-outline-light me-3" @click="toggleSidebar" title="Toggle Sidebar">
+        <i class="bi bi-list"></i>
+      </button>
       <h5 class="mb-0 text-white">Chat</h5>
       <span v-if="currentModel" class="badge bg-primary ms-2">{{ currentModel }}</span>
     </div>
@@ -23,10 +26,12 @@
 <script setup>
 import { computed } from 'vue'
 import { useChatStore } from '@/stores/chatStore'
+import { useSidebar } from '@/composables/useSidebar'
 import ModelSelector from '@/components/chat/ModelSelector.vue'
 import { useAnimation } from '@/composables/useAnimation'
 
 const chatStore = useChatStore()
+const { toggleSidebar } = useSidebar()
 const { showThanking, animationMessage } = useAnimation()
 
 const messages = computed(() => chatStore.messages)

@@ -251,3 +251,15 @@ body {
 .list-group-item:hover {
   background-color: rgba(108, 99, 255, 0.1);
 }
+
+/* Sidebar Toggle Transitions */
+.sidebar-enter-active,
+.sidebar-leave-active {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sidebar-enter-from,
+.sidebar-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
+}
