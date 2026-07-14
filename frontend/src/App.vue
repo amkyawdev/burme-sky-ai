@@ -22,7 +22,7 @@ const { isSidebarOpen } = useSidebar()
 
 .main-content {
   flex: 1;
-  margin-left: 280px;
+  margin-left: 220px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;

@@ -1,6 +1,6 @@
 <template>
-  <button class="btn btn-primary w-100 mb-3" @click="startNewChat">
-    <i class="bi bi-plus-lg me-2"></i>
+  <button class="btn btn-primary btn-sm w-100 mb-2" @click="startNewChat">
+    <i class="bi bi-plus-lg me-1"></i>
     New Chat
   </button>
 </template>
@@ -22,13 +22,7 @@ const startNewChat = () => {
 .btn-primary {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   border: none;
-  padding: 0.75rem 1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.4);
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
 }
 </style>

@@ -3,10 +3,10 @@
     <!-- Chat Header -->
     <header class="chat-header">
       <div class="d-flex align-items-center">
-        <button class="btn btn-outline-light me-3" @click="toggleSidebar" title="Toggle Sidebar">
+        <button class="btn btn-outline-light btn-sm me-2" @click="toggleSidebar" title="Toggle Sidebar">
           <i class="bi bi-list"></i>
         </button>
-        <h5 class="mb-0 text-white">Chat</h5>
+        <h6 class="mb-0 text-white">Chat</h6>
         <span v-if="currentModel" class="badge bg-primary ms-2">{{ currentModel }}</span>
       </div>
       <div class="d-flex align-items-center gap-2">
@@ -73,7 +73,7 @@ const clearChat = () => {
 
 .chat-header {
   background-color: var(--bg-card);
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1rem;
   border-bottom: 1px solid rgba(108, 99, 255, 0.2);
   display: flex;
   align-items: center;
@@ -82,7 +82,7 @@ const clearChat = () => {
 
 .error-toast {
   position: fixed;
-  bottom: 80px;
+  bottom: 70px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;

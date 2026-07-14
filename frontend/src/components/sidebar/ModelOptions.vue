@@ -1,7 +1,7 @@
 <template>
-  <div class="model-options mb-3">
-    <h6 class="text-white mb-2">
-      <i class="bi bi-gpu me-2"></i>Models
+  <div class="model-options mb-2">
+    <h6 class="text-white mb-1" style="font-size: 0.75rem;">
+      <i class="bi bi-gpu me-1"></i>Models
     </h6>
     <div class="model-grid">
       <div 
@@ -16,7 +16,6 @@
         </div>
         <div class="model-info">
           <small class="model-name">{{ model.name }}</small>
-          <small class="text-muted d-block">{{ model.category }}</small>
         </div>
       </div>
     </div>
@@ -30,10 +29,10 @@ import { useChatStore } from '@/stores/chatStore'
 const chatStore = useChatStore()
 
 const models = [
-  { id: 'llama2', name: 'Llama 2', category: 'General', icon: 'bi bi-robot' },
-  { id: 'codellama', name: 'Code Llama', category: 'Coding', icon: 'bi bi-code-slash' },
-  { id: 'mistral', name: 'Mistral', category: 'Fast', icon: 'bi bi-lightning-charge' },
-  { id: 'mixtral', name: 'Mixtral', category: 'Quality', icon: 'bi bi-stars' }
+  { id: 'llama2', name: 'Llama 2', icon: 'bi bi-robot' },
+  { id: 'codellama', name: 'Code', icon: 'bi bi-code-slash' },
+  { id: 'mistral', name: 'Mistral', icon: 'bi bi-lightning-charge' },
+  { id: 'mixtral', name: 'Mixtral', icon: 'bi bi-stars' }
 ]
 
 const currentModel = computed(() => chatStore.currentModel)
@@ -45,26 +44,27 @@ const selectModel = (modelId) => {
 
 <style scoped>
 .model-options {
-  padding: 0.75rem;
+  padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.05);
-  border-radius: var(--border-radius);
+  border-radius: 8px;
 }
 
 .model-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
+  gap: 0.3rem;
 }
 
 .model-card {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 8px;
+  gap: 0.3rem;
+  padding: 0.3rem;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
   border: 1px solid transparent;
+  font-size: 0.7rem;
 }
 
 .model-card:hover {
@@ -77,14 +77,14 @@ const selectModel = (modelId) => {
 }
 
 .model-icon {
-  width: 32px;
-  height: 32px;
+  width: 20px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--primary-color);
-  border-radius: 8px;
-  font-size: 1rem;
+  border-radius: 4px;
+  font-size: 0.6rem;
 }
 
 .model-info {
@@ -97,5 +97,6 @@ const selectModel = (modelId) => {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 0.7rem;
 }
 </style>
