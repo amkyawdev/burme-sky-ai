@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <Sidebar />
-    <div class="main-content" :class="{ 'full-width': !isSidebarOpen }">
+    <div class="main-content" :class="{ 'full-width': !sidebarState.isOpen }">
       <router-view />
     </div>
   </div>
@@ -11,7 +11,7 @@
 import { useSidebar } from './composables/useSidebar'
 import Sidebar from './components/common/Sidebar.vue'
 
-const { isSidebarOpen } = useSidebar()
+const { sidebarState } = useSidebar()
 </script>
 
 <style scoped>

@@ -1,22 +1,24 @@
-import { ref } from 'vue'
+import { reactive } from 'vue'
 
-const isSidebarOpen = ref(false)
+const state = reactive({
+  isOpen: false
+})
 
-export const useSidebar = () => {
+export function useSidebar() {
   const toggleSidebar = () => {
-    isSidebarOpen.value = !isSidebarOpen.value
+    state.isOpen = !state.isOpen
   }
 
   const openSidebar = () => {
-    isSidebarOpen.value = true
+    state.isOpen = true
   }
 
   const closeSidebar = () => {
-    isSidebarOpen.value = false
+    state.isOpen = false
   }
 
   return {
-    isSidebarOpen,
+    sidebarState: state,
     toggleSidebar,
     openSidebar,
     closeSidebar

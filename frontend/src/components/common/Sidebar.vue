@@ -1,26 +1,28 @@
 <template>
-  <aside v-if="isSidebarOpen" class="sidebar">
-    <div class="sidebar-header mb-2">
-      <img src="/images/logo.svg" alt="Logo" class="img-fluid" style="max-width: 50px;">
-      <h6 class="mt-1 text-white">Burme Sky AI</h6>
-    </div>
+  <Transition name="sidebar">
+    <aside v-if="sidebarState.isOpen" class="sidebar">
+      <div class="sidebar-header mb-2">
+        <img src="/images/logo.svg" alt="Logo" class="img-fluid" style="max-width: 50px;">
+        <h6 class="mt-1 text-white">Burme Sky AI</h6>
+      </div>
 
-    <NewChat />
-    
-    <div class="flex-grow-1 overflow-auto my-2">
-      <ModelOptions />
-      <HistoryList />
-    </div>
+      <NewChat />
 
-    <div class="sidebar-footer mt-auto pt-2 border-top">
-      <router-link to="/settings" class="btn btn-outline-light btn-sm w-100 mb-1">
-        <i class="bi bi-gear me-1"></i>Settings
-      </router-link>
-      <router-link to="/about" class="btn btn-outline-light btn-sm w-100">
-        <i class="bi bi-info-circle me-1"></i>About
-      </router-link>
-    </div>
-  </aside>
+      <div class="flex-grow-1 overflow-auto my-2">
+        <ModelOptions />
+        <HistoryList />
+      </div>
+
+      <div class="sidebar-footer mt-auto pt-2 border-top">
+        <router-link to="/settings" class="btn btn-outline-light btn-sm w-100 mb-1">
+          <i class="bi bi-gear me-1"></i>Settings
+        </router-link>
+        <router-link to="/about" class="btn btn-outline-light btn-sm w-100">
+          <i class="bi bi-info-circle me-1"></i>About
+        </router-link>
+      </div>
+    </aside>
+  </Transition>
 </template>
 
 <script setup>
@@ -29,7 +31,7 @@ import NewChat from '@/components/sidebar/NewChat.vue'
 import HistoryList from '@/components/sidebar/HistoryList.vue'
 import ModelOptions from '@/components/sidebar/ModelOptions.vue'
 
-const { isSidebarOpen } = useSidebar()
+const { sidebarState } = useSidebar()
 </script>
 
 <style scoped>
@@ -45,15 +47,16 @@ const { isSidebarOpen } = useSidebar()
   display: flex;
   flex-direction: column;
   z-index: 100;
+}
+
+.sidebar-enter-active,
+.sidebar-leave-active {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.sidebar-header {
-  text-align: center;
-  padding: 0.5rem;
-}
-
-.sidebar-footer {
-  border-color: rgba(108, 99, 255, 0.2) !important;
+.sidebar-enter-from,
+.sidebar-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
 }
 </style>
