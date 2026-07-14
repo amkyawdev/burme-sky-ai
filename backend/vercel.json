@@ -1,7 +1,7 @@
 {
   "builds": [
-    { 
-      "src": "app/main.py", 
+    {
+      "src": "app/main.py",
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
@@ -10,19 +10,20 @@
     }
   ],
   "routes": [
-    { 
-      "src": "/api/(.*)", 
-      "dest": "app/main.py" 
+    {
+      "src": "/api/(.*)",
+      "dest": "app/main.py"
     },
-    { 
-      "src": "/health", 
-      "dest": "app/main.py" 
+    {
+      "src": "/health",
+      "dest": "app/main.py"
     },
-    { 
-      "src": "/", 
-      "dest": "app/main.py" 
+    {
+      "src": "/",
+      "dest": "app/main.py"
     }
   ],
   "installCommand": "pip install -r requirements.txt",
-  "buildCommand": "echo 'Backend build complete'"
+  "buildCommand": "pip install -r requirements.txt",
+  "outputDirectory": ""
 }
