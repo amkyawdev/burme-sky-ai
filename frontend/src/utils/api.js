@@ -2,7 +2,9 @@ import { useSettingsStore } from '@/stores/settingsStore'
 
 const getApiUrl = () => {
   const settings = useSettingsStore()
-  return settings.apiUrl
+  // Use environment variable if available, otherwise fall back to settings
+  const envUrl = import.meta.env.VITE_API_URL || '/api'
+  return settings.apiUrl || envUrl
 }
 
 export const streamChat = async (message, model, onChunk, onDone) => {
