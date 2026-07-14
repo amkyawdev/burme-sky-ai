@@ -25,7 +25,6 @@
   ],
   "env": {
     "OLLAMA_URL": "@ollama_url",
-    "OLLAMA_API_KEY": "@ollama_api_key",
     "WEBHOOK_URL": "@webhook_url"
   },
   "installCommand": "pip install -r requirements.txt",
