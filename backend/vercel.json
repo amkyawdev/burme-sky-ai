@@ -1,0 +1,25 @@
+{
+  "builds": [
+    { 
+      "src": "app/main.py", 
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb"
+      }
+    }
+  ],
+  "routes": [
+    { 
+      "src": "/api/(.*)", 
+      "dest": "app/main.py" 
+    },
+    { 
+      "src": "/(.*)", 
+      "dest": "app/main.py" 
+    }
+  ],
+  "env": {
+    "OLLAMA_URL": "@ollama_url",
+    "OLLAMA_API_KEY": "@ollama_api_key"
+  }
+}
