@@ -4,7 +4,8 @@
       "src": "app/main.py", 
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "15mb"
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.11"
       }
     }
   ],
@@ -14,12 +15,19 @@
       "dest": "app/main.py" 
     },
     { 
+      "src": "/health", 
+      "dest": "app/main.py" 
+    },
+    { 
       "src": "/(.*)", 
       "dest": "app/main.py" 
     }
   ],
   "env": {
     "OLLAMA_URL": "@ollama_url",
-    "OLLAMA_API_KEY": "@ollama_api_key"
-  }
+    "OLLAMA_API_KEY": "@ollama_api_key",
+    "WEBHOOK_URL": "@webhook_url"
+  },
+  "installCommand": "pip install -r requirements.txt",
+  "buildCommand": "echo 'Backend build complete'"
 }
